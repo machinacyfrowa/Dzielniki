@@ -63,12 +63,20 @@ void pierwsze()
                                                                // rozdzielając przecinkami 
     Console.WriteLine("Liczby: " + znalezioneLiczby);
 }
+float pitagoras(float a, float b)
+{
+    //math.sqrt domaga się jako argumentu typu double i zwraca double więc musimy wykonać stosowne rzutowania
+    double c = Math.Sqrt( (double)( Math.Pow(a, 2) + Math.Pow(b, 2) ) );
+    return (float)c;
+}
+
 int wybor;
 do
 {
     Console.WriteLine("Co chcesz zrobić:");
     Console.WriteLine("1. Pokaż kolejne liczby podzielne przez");
     Console.WriteLine("2. Pokaż kolejne liczby pierwsze");
+    Console.WriteLine("3. Policz przeciwprostokątną z pitagorasa");
     Console.WriteLine("0. Wyjście");
     wybor = int.Parse(Console.ReadLine() ?? "0");
     switch (wybor)
@@ -78,6 +86,14 @@ do
             break;
         case 2:
             pierwsze();
+            break;
+        case 3:
+            Console.WriteLine("Podaj długość pierwszej przyprostokątnej (a):");
+            float a = float.Parse(Console.ReadLine() ?? "1");
+            Console.WriteLine("Podaj długość drugiej przyprostokątnej (b):");
+            float b = float.Parse(Console.ReadLine() ?? "1");
+            float c = pitagoras(a, b);
+            Console.WriteLine("Długość przeciwprostokątnej to: " + c.ToString());
             break;
         case 0:
             Console.WriteLine("Zamykam program...");
