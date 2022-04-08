@@ -63,25 +63,29 @@ void pierwsze()
                                                                // rozdzielając przecinkami 
     Console.WriteLine("Liczby: " + znalezioneLiczby);
 }
-
-Console.WriteLine("Co chcesz zrobić:");
-Console.WriteLine("1. Pokaż kolejne liczby podzielne przez");
-Console.WriteLine("2. Pokaż kolejne liczby pierwsze");
-Console.WriteLine("0. Wyjście");
-int wybor = int.Parse(Console.ReadLine() ?? "0");
-switch(wybor)
+int wybor;
+do
 {
-    case 1:
-        dzielniki();
-        break;
-    case 2:
-        pierwsze();
-        break;
-    case 0:
-        Console.WriteLine("Zamykam program...");
-        break;
-    default: 
-        Console.WriteLine("Podano nieprawidłowy wybór!");
-        break;
-}
-
+    Console.WriteLine("Co chcesz zrobić:");
+    Console.WriteLine("1. Pokaż kolejne liczby podzielne przez");
+    Console.WriteLine("2. Pokaż kolejne liczby pierwsze");
+    Console.WriteLine("0. Wyjście");
+    wybor = int.Parse(Console.ReadLine() ?? "0");
+    switch (wybor)
+    {
+        case 1:
+            dzielniki();
+            break;
+        case 2:
+            pierwsze();
+            break;
+        case 0:
+            Console.WriteLine("Zamykam program...");
+            break;
+        default:
+            Console.WriteLine("Podano nieprawidłowy wybór!");
+            break;
+    }
+    Console.ReadLine();
+    Console.Clear();
+}while(wybor != 0);
