@@ -30,15 +30,52 @@
                                                                // rozdzielając przecinkami 
     Console.WriteLine("Liczby: " + znalezioneLiczby);
 }
+void pierwsze()
+{
+    Console.WriteLine("Podaj liczbę początkową");
+    int liczba = int.Parse(Console.ReadLine() ?? "0");
+    Console.WriteLine("Podaj ilość liczb pierwszych do znalezienia:");
+    int ilosc = int.Parse(Console.ReadLine() ?? "1");
+    int iloscLiczb = 0;
+    int[] tablicaLiczb = new int[ilosc];
+    while(iloscLiczb < ilosc)
+    {
+        bool czyPierwsza = true; // zakładamy, że jest pierwsza
+        //sprawdzamy czy faktycznie jest pierwsza
+        for(int i = 2; i < liczba; i++)
+        {
+            if(liczba % i == 0) //znaleziono dzielnik
+            {
+                czyPierwsza = false; //nie jest pierwsza
+                break; //dalej nie szukaj
+            }
+        }
+        //jeśli doszliśmy tu i czypierwsza jest dalej true to znaczy ze faktycznie jest pierwsza
+        if(czyPierwsza)
+        {
+            tablicaLiczb[iloscLiczb] = liczba;
+            iloscLiczb++;
+        }
+        //lecimy do przodu od liczby początkowej
+        liczba++;
+    }
+    string znalezioneLiczby = string.Join(", ", tablicaLiczb); // połącz elementy tablicy jako string,
+                                                               // rozdzielając przecinkami 
+    Console.WriteLine("Liczby: " + znalezioneLiczby);
+}
 
 Console.WriteLine("Co chcesz zrobić:");
 Console.WriteLine("1. Pokaż kolejne liczby podzielne przez");
+Console.WriteLine("2. Pokaż kolejne liczby pierwsze");
 Console.WriteLine("0. Wyjście");
 int wybor = int.Parse(Console.ReadLine() ?? "0");
 switch(wybor)
 {
     case 1:
         dzielniki();
+        break;
+    case 2:
+        pierwsze();
         break;
     case 0:
         Console.WriteLine("Zamykam program...");
